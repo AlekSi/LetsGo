@@ -1,4 +1,4 @@
-This is a slide deck for a talk "Let's Go, or introduction into Go" I gave at [RailsClub’Ulyanovsk](http://railsclub.ru/conference) (other themes covered on this conference for (ex-)Rubists/Railsists: Erlang, functional programming and EventMachine). The talk and slides are in Russian.
+This is a slide deck for a talk "Let's Go, or introduction into Go" I gave at [RailsClub’Ulyanovsk](http://railsclub.ru/conference) conference at 15 December 2012 (other themes covered on this conference for (ex-)Rubists/Railsists: Erlang, functional programming and EventMachine). The talk and slides are in Russian.
 
 Talk can be viewed [there](http://live.digicast.ru/view/1582) (starting at 14:35).
 
