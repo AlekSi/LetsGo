@@ -1,0 +1,391 @@
+Let's Go, или введение в Go
+15.12.2012
+
+Алексей Палажченко
+Express 42
+
+
+* Hello world!
+
+.play lets-go/hello.go
+
+	go run hello.go
+
+.image lets-go/frontpage.png
+
+
+* Hello HTTP/1.1!
+
+.play lets-go/hello-server.go
+
+
+* Что это?
+
+- открытый проект
+- 2 компилятора (gc, gcc), 1 интерпретатор
+- сверх-быстрая компиляция (stdlib – 9 секунд)
+- объектно-ориентированный, но лёгкий
+- явное приведение типов (int, int32, int64 – разные типы)
+- сборщик мусора
+- горутины (лёгкие нити) и каналы
+- инструменты
+- … и ничего нового (с точки зрения науки)
+
+.image lets-go/project.png
+
+
+* Кто все эти люди?
+
+.image lets-go/team.png
+
+…, Роберт Гризмер, Роб Пайк, Кен Томпсон, …, Брэд Фицпатрик
+
+
+* Зачем?
+
+«Back around September 2007, I was doing some minor but central work on an enormous Google C++ program, one you've all interacted with, and my compilations were taking about 45 minutes on our huge distributed compile cluster», – Роб Пайк.
+
+- быстрее
+- проще
+- эффективнее
+- масштабируемее
+
+.image lets-go/logo.png
+
+
+* Для кого?
+
+Роб Пайк:
+
+«Although we expected C++ programmers to see Go as an alternative, instead most Go programmers come from languages like Python and Ruby. Very few come from C++.»
+
+«Python and Ruby programmers come to Go because they don't have to surrender much expressiveness, but gain performance and get to play with concurrency.»
+
+.image lets-go/talks.png
+
+
+* Основы синтаксиса
+
+
+* Пакеты, импорты, экспортируемые имена
+
+.play lets-go/hello-exported.go
+
+
+* Определения
+
+.play lets-go/defs.go
+
+
+* А почему не как в C?
+
+	var a int
+
+	int a
+
+
+	func(func(int, int) int, int) int
+
+	int (*fp)(int (*ff)(int x, int y), int b)
+
+
+* Константы
+
+.play lets-go/consts.go
+
+
+* Типы
+
+- bool
+- string (неизменяемые)
+- int, int8, int16, int32, int64
+- uint, uint8, uint16, uint32, uint64
+- uintptr
+- byte (синоним для uint8)
+- rune (синоним int32, Unicode code point)
+- float32 float64
+- complex64 complex128
+
+.image lets-go/ref.png
+
+
+* Ещё типы
+
+- Массивы
+- Слайсы (slices)
+- Ассоциативные массивы (maps)
+- Структуры
+- Указатели
+- Каналы
+- Функции и методы
+
+.image lets-go/ref.png
+
+
+* Массивы
+
+.play lets-go/arrays.go
+
+
+* Слайсы
+
+.play lets-go/slices.go
+
+
+* Ассоциативные массивы
+
+.play lets-go/maps.go
+
+
+* Структуры
+
+.play lets-go/structs.go
+
+
+* Embedded структуры
+
+.play lets-go/embed.go
+
+
+* Указатели
+
+.play lets-go/pointers.go
+
+
+* for
+
+.play lets-go/for.go
+
+
+* range
+
+.play lets-go/range.go
+
+
+* if и else
+
+.play lets-go/if.go
+
+
+* switch, case и default
+
+.play lets-go/switch.go
+
+
+* Функции и интерфейсы
+
+
+* Функции и аргументы
+
+.play lets-go/functions.go
+
+
+* Замыкания
+
+.play lets-go/closures.go
+
+
+* Методы
+
+.play lets-go/methods.go
+
+
+* Embedded структуры и методы
+
+.play lets-go/methods2.go
+
+
+* Интерфейсы
+
+.play lets-go/interfaces.go
+
+
+* Интерфейсы
+
+.play lets-go/interfaces2.go /START OMIT/,/END OMIT/
+
+
+* Стандартные интерфейсы
+
+	type error interface {
+		Error() string
+	}
+
+	type Reader interface {
+		Read(p []byte) (n int, err error)
+	}
+
+	type Writer interface {
+		Write(p []byte) (n int, err error)
+	}
+
+	r := os.Open("input.txt")
+	w := os.OpenFile("output.txt", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
+	io.Copy(w, r)
+
+
+* Приведение к интерфейсу
+
+	func Copy(dst Writer, src Reader) (written int64, err error) {
+		if rt, ok := dst.(ReaderFrom); ok {
+			return rt.ReadFrom(src)
+		}
+
+		if wt, ok := src.(WriterTo); ok {
+			return wt.WriteTo(dst)
+		}
+
+		// используем dst.Write() и src.Read()
+
+
+* Пустой интерфейс
+
+	func Printf(format string, a ...interface{})
+
+	void*
+
+
+* Ошибки
+
+
+* Panic
+
+.play lets-go/panic.go
+
+
+* Defer
+
+.play lets-go/defer.go
+
+
+* DON'T PANIC!
+
+.play lets-go/recover.go
+
+.image lets-go/help.png
+
+
+* Concurrency
+
+
+* Девиз
+
+Do not communicate by sharing memory; instead share memory by communicating.
+
+
+* Горутины
+
+.play lets-go/goroutines.go
+
+
+* Каналы
+
+.play lets-go/channels.go
+
+
+* Закрытие канала
+
+.play lets-go/close.go
+
+
+* Выбор канала
+
+.play lets-go/select.go
+
+
+* Но есть и…
+
+- atomic.AddUint64
+- atomic.CompareAndSwapUint64
+- sync.Mutex
+- sync.RWMutex
+- sync.WaitGroup
+- … и подобное
+
+
+* Crawler
+
+
+* Get
+
+.code lets-go/crawler.go /GET OMIT/,/PARSE OMIT/
+
+
+* Parse
+
+.code lets-go/crawler.go /PARSE OMIT/,/PARSE 1 OMIT/
+
+
+* Parse
+
+.code lets-go/crawler.go /PARSE 1 OMIT/,/CRAWLER OMIT/
+
+
+* Crawler
+
+.code lets-go/crawler.go /CRAWLER OMIT/,/PARSER OMIT/
+
+
+* Parser
+
+.code lets-go/crawler.go /PARSER OMIT/,/MAIN OMIT/
+
+
+* Всё вместе
+
+.play lets-go/crawler.go /MAIN OMIT/,
+
+
+* Окружение
+
+
+* go
+
+- go fmt
+- go vet
+- go doc
+- go get
+- go run
+- go test
+
+
+* Пакеты
+
+	go get -u -v code.google.com/p/go.talks/present
+
+.image lets-go/run.png
+
+
+* gonuts.io (альфа)
+
+	nut generate
+	nut check
+	nut pack
+	nut publish super_nut
+
+	nut get super_nut
+
+.image lets-go/pkg.png
+
+
+* Будущее
+
+
+* 1.1 (уже скоро™)
+
+- ещё быстрее
+- значительные улучшения в GC (precise, parallel)
+- Race-detector (ThreadSanitizer – Google Москва)
+- html5 парсер
+
+
+* Спасибо
+
+Алексей Палажченко (@paaleksey)
+Express 42
+
+.link http://github.com/AlekSi
+
+.link http://gonuts.io
+
+.image lets-go/doc.png
