@@ -9,9 +9,9 @@ type Conference struct {
 
 func main() {
 	confs := []Conference{
-		Conference{"Стачка", 0},
-		Conference{"RailsClub", 100500},
-		Conference{"RailsClub'Ulyanovsk", 300},
+		{"Стачка", 0},
+		{"RailsClub", 100500},
+		{"RailsClub'Ulyanovsk", 300},
 	}
 	for _, conf := range confs {
 		if conf.income >= 10000 {
