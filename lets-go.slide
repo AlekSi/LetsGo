@@ -1,8 +1,16 @@
 Let's Go, или введение в Go
-15.12.2012
 
 Алексей Палажченко
-Express 42
+
+
+* Кто здесь?!
+
+- Qik > Skype > Microsoft
+- Express 42
+- Croice
+- github.com/AlekSi
+- meetup.com/Golang-Moscow
+- группа golang-ru
 
 
 * Hello world!
@@ -22,13 +30,13 @@ Express 42
 * Что это?
 
 - открытый проект
-- 2 компилятора (gc, gcc), 1 интерпретатор
+- 2 компилятора (gc, gcc) + другие проекты
 - сверх-быстрая компиляция (stdlib – 9 секунд)
 - объектно-ориентированный, но лёгкий
 - явное приведение типов (int, int32, int64 – разные типы)
 - сборщик мусора
 - горутины (лёгкие нити) и каналы
-- инструменты
+- инструменты (race detector!)
 - … и ничего нового (с точки зрения науки)
 
 .image lets-go/project.png
@@ -38,7 +46,7 @@ Express 42
 
 .image lets-go/team.png
 
-…, Роберт Гризмер, Роб Пайк, Кен Томпсон, …, Брэд Фицпатрик
+…, Роберт Гризмер, Роб Пайк, Кен Томпсон, Эндрю Герранд, Брэд Фицпатрик
 
 
 * Зачем?
@@ -371,18 +379,19 @@ Do not communicate by sharing memory; instead share memory by communicating.
 * Будущее
 
 
-* 1.1 (уже скоро™)
+* 1.2 (уже скоро™)
 
-- ещё быстрее
-- значительные улучшения в GC (precise, parallel)
-- Race-detector (ThreadSanitizer – Google Москва)
-- html5 парсер
+- http://tip.golang.org/doc/go1.2
+- three-index slices
+- вытесняющий планировщик
+- реализация netpoll для *BSD и Windows
+- быстрее, ещё быстрее
 
 
 * Спасибо
 
-Алексей Палажченко (@paaleksey)
-Express 42
+Алексей Палажченко
+@paaleksey
 
 .link http://github.com/AlekSi
 
