@@ -1,13 +1,15 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
 )
 
 func main() {
 	f, err := os.Open("lets-go/defer.go")
-	fmt.Printf("Error: %v\n", err)
+	if err != nil {
+		log.Fatal(err)
+	}
 	defer f.Close()
 
 	// работа с f

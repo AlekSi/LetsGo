@@ -8,12 +8,12 @@ type Event struct {
 
 type Conference struct {
 	Event  // HL
-	income int
+	income float64
 }
 
 func main() {
-	conf := Conference{Event: Event{Name: "RailsClub"}}
-	conf.Name = "RailsClub'Ulyanovsk"
+	conf := Conference{Event: Event{Name: "РИТ++"}}
+	conf.Name = "Golang-Moscow"
 	fmt.Printf("%#v\n", conf)
-	fmt.Printf("%s\n", conf.Name) // HL
+	fmt.Printf("%s\n", conf.Name) // conf.Event.Name // HL
 }

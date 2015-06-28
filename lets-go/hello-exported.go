@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Printf("今日は, Питер! Pi = %f\n", math.pi) // HL
+	fmt.Printf("今日は, РИТ++! Pi = %f\n", math.pi) // math.Pi // HL
 }

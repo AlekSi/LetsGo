@@ -4,7 +4,7 @@ import "fmt"
 
 type Conference struct {
 	Name   string
-	income int
+	income float64
 }
 
 func main() {

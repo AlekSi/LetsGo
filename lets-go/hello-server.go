@@ -7,7 +7,7 @@ import (
 
 func main() {
 	hello := func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "今日は, Питер!")
+		fmt.Fprintln(w, "今日は, РИТ++!")
 	}
-	http.ListenAndServe(":6789", http.HandlerFunc(hello))
+	http.ListenAndServe("127.0.0.1:6789", http.HandlerFunc(hello))
 }

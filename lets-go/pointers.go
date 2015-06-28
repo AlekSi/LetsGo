@@ -4,12 +4,12 @@ import "fmt"
 
 type Conference struct {
 	Name   string
-	income int
+	income float64
 }
 
 func get() *Conference {
-	conf := Conference{Name: "RailsClub'Ulyanovsk", income: 1}
-	return &conf // HL
+	conf := Conference{Name: "РИТ++", income: 100500}
+	return &conf // так можно // HL
 }
 
 func main() {

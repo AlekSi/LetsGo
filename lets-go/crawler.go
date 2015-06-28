@@ -22,12 +22,17 @@ func get(u string) *http.Response {
 var re = regexp.MustCompile(`href="(.+?)"`)
 
 func parse(res *http.Response) (urls []string) {
+	if res.Body == nil {
+		return
+	}
+
+	defer res.Body.Close()
+
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		log.Print(err)
 		return
 	}
-	res.Body.Close()
 
 	matches := re.FindAllSubmatch(body, -1)
 
@@ -87,6 +92,6 @@ func main() {
 		go crawler()
 	}
 
-	urls <- "http://railsclub.ru/"
+	urls <- "http://ritfest.ru/"
 	parser()
 }

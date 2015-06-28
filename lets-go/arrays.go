@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	array := [...]string{"0", "1", "2", "3", "4"}
+	array := [...]string{"0", "1", "2", "3", "4"} // фиксированный размер // HL
 	array[4] = "*"
 	fmt.Printf("%#v\n\n", array)
 

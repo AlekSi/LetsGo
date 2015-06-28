@@ -5,31 +5,31 @@ import (
 	"sort"
 )
 
-type Conference struct {
+type Event struct {
 	Name string
 }
 
-type Conferences []Conference
+type Events []Event
 
 // START OMIT
-func (c Conferences) Len() int {
+func (c Events) Len() int {
 	return len(c)
 }
 
-func (c Conferences) Less(i, j int) bool {
+func (c Events) Less(i, j int) bool {
 	return c[i].Name < c[j].Name
 }
 
-func (c Conferences) Swap(i, j int) {
+func (c Events) Swap(i, j int) {
 	c[i], c[j] = c[j], c[i]
 	return
 }
 
 func main() {
-	confs := Conferences{
-		Conference{"Стачка"},
-		Conference{"RailsClub"},
-		Conference{"RailsClub'Ulyanovsk"},
+	confs := Events{
+		{"DevConf"},
+		{"РИТ++"},
+		{"Golang-Moscow"},
 	}
 
 	sort.Sort(confs)

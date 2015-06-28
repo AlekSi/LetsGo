@@ -3,14 +3,14 @@ Let's Go, или введение в Go
 Алексей Палажченко
 
 
-* Кто здесь?!
+* Наша группа
 
-- Qik > Skype > Microsoft
-- Express 42
-- Croice
-- github.com/AlekSi
-- meetup.com/Golang-Moscow
-- группа golang-ru
+- [[https://www.meetup.com/Golang-Moscow][meetup.com/Golang-Moscow]]
+- [[https://groups.google.com/forum/#!forum/golang-ru][golang-ru @ Google Groups]]
+- [[https://golang-ru.slack.com/][golang-ru.slack.com]]
+- Skype: [[https://tinyurl.com/go-lang-chat][tinyurl.com/go-lang-chat]]
+
+.image lets-go/button.png
 
 
 * Hello world!
@@ -33,7 +33,7 @@ Let's Go, или введение в Go
 - 2 компилятора (gc, gcc) + другие проекты
 - сверх-быстрая компиляция (stdlib – 9 секунд)
 - объектно-ориентированный, но лёгкий
-- явное приведение типов (int, int32, int64 – разные типы)
+- статически и сильно типизированный, явное приведение типов (int, int32, int64)
 - сборщик мусора
 - горутины (лёгкие нити) и каналы
 - инструменты (race detector!)
@@ -85,18 +85,6 @@ Let's Go, или введение в Go
 .play lets-go/defs.go
 
 
-* А почему не как в C?
-
-	var a int
-
-	int a
-
-
-	func(func(int, int) int, int) int
-
-	int (*fp)(int (*ff)(int x, int y), int b)
-
-
 * Константы
 
 .play lets-go/consts.go
@@ -111,8 +99,8 @@ Let's Go, или введение в Go
 - uintptr
 - byte (синоним для uint8)
 - rune (синоним int32, Unicode code point)
-- float32 float64
-- complex64 complex128
+- float32, float64
+- complex64, complex128
 
 .image lets-go/ref.png
 
@@ -120,7 +108,7 @@ Let's Go, или введение в Go
 * Ещё типы
 
 - Массивы
-- Слайсы (slices)
+- Срезы (slices)
 - Ассоциативные массивы (maps)
 - Структуры
 - Указатели
@@ -160,22 +148,12 @@ Let's Go, или введение в Go
 .play lets-go/pointers.go
 
 
-* for
-
-.play lets-go/for.go
-
-
-* range
-
-.play lets-go/range.go
-
-
-* if и else
+* for, range, if и else
 
 .play lets-go/if.go
 
 
-* switch, case и default
+* switch, case, default и fallthrough
 
 .play lets-go/switch.go
 
@@ -250,18 +228,11 @@ Let's Go, или введение в Go
 
 	func Printf(format string, a ...interface{})
 
-	void*
+	C: void*
+	Java: Object
 
 
-* Ошибки
-
-
-* Panic
-
-.play lets-go/panic.go
-
-
-* Defer
+* error и defer
 
 .play lets-go/defer.go
 
@@ -276,7 +247,9 @@ Let's Go, или введение в Go
 * Concurrency
 
 
-* Девиз
+* Теория
+
+Concurrency is not parallelism.
 
 Do not communicate by sharing memory; instead share memory by communicating.
 
@@ -303,11 +276,11 @@ Do not communicate by sharing memory; instead share memory by communicating.
 
 * Но есть и…
 
-- atomic.AddUint64
-- atomic.CompareAndSwapUint64
-- sync.Mutex
-- sync.RWMutex
+- sync.Mutex, sync.RWMutex
+- sync.Cond
 - sync.WaitGroup
+- sync/atomic.AddUint64
+- sync/atomic.CompareAndSwapUint64
 - … и подобное
 
 
@@ -344,57 +317,13 @@ Do not communicate by sharing memory; instead share memory by communicating.
 .play lets-go/crawler.go /MAIN OMIT/,
 
 
-* Окружение
-
-
-* go
-
-- go fmt
-- go vet
-- go doc
-- go get
-- go run
-- go test
-
-
-* Пакеты
-
-	go get -u -v code.google.com/p/go.talks/present
-
-.image lets-go/run.png
-
-
-* gonuts.io (альфа)
-
-	nut generate
-	nut check
-	nut pack
-	nut publish super_nut
-
-	nut get super_nut
-
-.image lets-go/pkg.png
-
-
-* Будущее
-
-
-* 1.2 (уже скоро™)
-
-- http://tip.golang.org/doc/go1.2
-- three-index slices
-- вытесняющий планировщик
-- реализация netpoll для *BSD и Windows
-- быстрее, ещё быстрее
-
-
 * Спасибо
 
-Алексей Палажченко
-@paaleksey
+Алексей Палажченко / [[https://twitter.com/paaleksey][@paaleksey]] / [[https://github.com/AlekSi][github.com/AlekSi]]
 
-.link http://github.com/AlekSi
+- [[https://www.meetup.com/Golang-Moscow][meetup.com/Golang-Moscow]]
+- [[https://groups.google.com/forum/#!forum/golang-ru][golang-ru @ Google Groups]]
+- [[https://golang-ru.slack.com/][golang-ru.slack.com]]
+- Skype: [[https://tinyurl.com/go-lang-chat][tinyurl.com/go-lang-chat]]
 
-.link http://gonuts.io
-
-.image lets-go/doc.png
+.image lets-go/mascot.gif

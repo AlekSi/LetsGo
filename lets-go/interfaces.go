@@ -6,13 +6,13 @@ type Event interface {
 	Name() string
 }
 
-type Conference struct{}
+type RIT struct{}
 
-func (c Conference) Name() string {
-	return "RailsClub'Ulyanovsk"
+func (c RIT) Name() string {
+	return "РИТ++"
 }
 
 func main() {
-	conf := new(Conference) // = &Conference{}
+	conf := new(RIT) // = &RIT{}
 	fmt.Println(conf.Name())
 }

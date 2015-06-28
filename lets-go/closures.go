@@ -5,14 +5,13 @@ import "fmt"
 type Conference struct {
 	Name   string
 	Talks  int
-	income int
+	income float64
 }
 
 func main() {
-	name := "RailsClub'Ulyanovsk"
-	get := func() (conf *Conference, err error) {
-		conf = &Conference{Name: name, Talks: 15, income: 500}
-		return
+	name := "РИТ++"
+	get := func() (*Conference, error) { // HL
+		return &Conference{Name: name, Talks: 200, income: 100500}, nil
 	}
 	conf, err := get()
 	fmt.Printf("%#v\n", conf)
